@@ -1,0 +1,47 @@
+<template>
+  <div class="animate__animated animate__fadeIn animate__fast">
+    <div class="px-2">
+      <div class="mt-2 flex gap-2 border-b border-solid border-primary/50 text-left">
+        <div class="w-1/12"></div>
+        <div class="w-6/12">服務／產品名稱</div>
+        <div class="w-5/12 text-right">售價</div>
+      </div>
+    </div>
+    <div class="px-2">
+      <div class="mt-2 flex items-center gap-2 border-b border-solid border-primary/50 text-left" v-for="(item,index) in resultList" :key="`total${index}`">
+        <div class="w-1/12">
+          <C-Checkbox v-model="seleted"></C-Checkbox>
+        </div>
+        <div class="w-6/12">{{item.name}}</div>
+        <div class="w-5/12 text-right">${{item.price}}{{item.isUp ? 'up': ''}}</div>
+      </div>
+    </div>
+
+    <div class="fixed bottom-[100px] flex w-[calc(100%-24px)] items-center gap-4">
+        <div class="w-full cursor-pointer bg-rejectText py-2 px-4 text-white" >刪除勾選項目</div>
+        <div class="w-full cursor-pointer bg-second py-2 px-4 text-white">儲存編輯</div>
+      </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'customer-component-userInfo',
+  data() {
+    return {
+      seleted: [],
+      resultList: [
+        { name: '健康洗髮', price: '250', isUp: true },
+        { name: '健康洗髮(A級)', price: '300', isUp: true },
+        { name: '清涼沁透洗髮', price: '398', isUp: false },
+        { name: '剪髮', price: '600', isUp: true },
+        { name: '剪髮(Ａ級)', price: '1000', isUp: true },
+      ],
+    };
+  },
+};
+</script>
+
+<style>
+
+</style>
